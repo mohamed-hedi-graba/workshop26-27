@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Write — Inkwell{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Write a story</h1>
+</div>
+
+<form id="post-form" class="form wide" enctype="multipart/form-data">
+  <label>Title
+    <input name="title" required />
+  </label>
+  <label>Body <span class="muted">(Markdown supported)</span>
+    <textarea name="content" rows="14" placeholder="# My heading&#10;&#10;Write in **Markdown**..."></textarea>
+  </label>
+  <label>Cover image <span class="muted">(optional)</span>
+    <input name="image" type="file" accept="image/*" />
+  </label>
+  <label>Visibility
+    <select name="visibility">
+      <option value="public">Public — anyone can read</option>
+      <option value="private">Private — only you</option>
+    </select>
+  </label>
+  <button class="btn" type="submit">Publish</button>
+  <p class="form-error" id="err"></p>
+</form>
+{% endblock %}
+{% block scripts %}
+<script>
+document.getElementById("post-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const err = document.getElementById("err");
+  err.textContent = "";
+  const fd = new FormData(e.target);
+  const res = await fetch("/api/posts", { method: "POST", body: fd });
+  if (res.ok) {
+    const d = await res.json();
+    window.location = "/posts/" + d.id;
+  } else {
+    const d = await res.json().catch(() => ({}));
+    err.textContent = d.detail || "Could not publish";
+  }
+});
+</script>
+{% endblock %}

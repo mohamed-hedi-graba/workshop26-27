@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Authors — Inkwell{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Authors</h1>
+</div>
+<section class="authors-grid">
+  {% for a in authors %}
+  <div class="author-card">
+    <div class="profile-avatar small">{{ a.username[0]|upper }}</div>
+    <h3>{{ a.username }}</h3>
+    {% if a.bio %}<p class="muted">{{ a.bio }}</p>{% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

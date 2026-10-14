@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Inkwell{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>Your stories</h1>
+    <p class="muted">Signed in as {{ user.username }}</p>
+  </div>
+  <a href="/new" class="btn">New story</a>
+</div>
+
+<section class="feed list">
+  {% if posts %}
+    {% for post in posts %}
+    <article class="row">
+      <div>
+        <h3><a href="/posts/{{ post.id }}">{{ post.title }}</a></h3>
+        <p class="meta">{{ post.created_at.strftime("%b %d, %Y") }}</p>
+      </div>
+      <span class="pill {{ 'pill-private' if post.visibility == 'private' else 'pill-public' }}">
+        {{ post.visibility }}
+      </span>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p class="muted">You haven't published anything yet.</p>
+  {% endif %}
+</section>
+
+<p class="muted logout"><a href="#" id="logout">Sign out</a></p>
+{% endblock %}
+{% block scripts %}
+<script>
+document.getElementById("logout").addEventListener("click", async (e) => {
+  e.preventDefault();
+  await fetch("/api/auth/logout", { method: "POST" });
+  window.location = "/";
+});
+</script>
+{% endblock %}

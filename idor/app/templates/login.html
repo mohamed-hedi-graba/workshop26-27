@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Sign in — Inkwell{% endblock %}
+{% block content %}
+<div class="auth-card">
+  <h1>Welcome back</h1>
+  {% if redirect %}<p class="notice">Please sign in to continue.</p>{% endif %}
+  <form id="login-form" class="form">
+    <label>Username
+      <input name="username" autocomplete="username" required />
+    </label>
+    <label>Password
+      <input name="password" type="password" autocomplete="current-password" required />
+    </label>
+    <button class="btn" type="submit">Sign in</button>
+    <p class="form-error" id="err"></p>
+  </form>
+  <p class="muted">New here? <a href="/register">Create an account</a></p>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const err = document.getElementById("err");
+  err.textContent = "";
+  const res = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username: f.username.value, password: f.password.value }),
+  });
+  if (res.ok) {
+    window.location = "/dashboard";
+  } else {
+    const d = await res.json().catch(() => ({}));
+    err.textContent = d.detail || "Sign in failed";
+  }
+});
+</script>
+{% endblock %}

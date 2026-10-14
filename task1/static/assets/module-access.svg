@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none" stroke="#E80032" stroke-width="3">
+  <!-- shield, cracked -->
+  <path d="M150,30 L210,55 V120 C210,170 180,205 150,225 C120,205 90,170 90,120 V55 Z"/>
+  <path d="M150,35 L128,85 L168,120 L132,165 L150,215" stroke-dasharray="5 5" opacity="0.8"/>
+
+  <!-- open padlock, off to the side -->
+  <path d="M300 78 a15 15 0 0 1 30 -8"/>
+  <rect x="295" y="90" width="40" height="28" rx="3"/>
+  <circle cx="315" cy="104" r="3" fill="#E80032" stroke="none"/>
+
+  <!-- unchecked path -->
+  <line x1="215" y1="130" x2="290" y2="105" stroke-dasharray="4 4" opacity="0.6"/>
+  <polygon points="290,105 278,106 282,116" fill="#E80032" stroke="none" opacity="0.6"/>
+
+  <text x="200" y="245" font-family="'Courier New', monospace" font-size="12" fill="#E80032" stroke="none" text-anchor="middle">GET /ADMIN &#8594; 200 OK</text>
+</svg>

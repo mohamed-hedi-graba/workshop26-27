@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none" stroke="#E80032" stroke-width="3">
+  <!-- client -->
+  <rect x="20" y="95" width="110" height="65" rx="4"/>
+  <text x="75" y="133" font-family="'Courier New', monospace" font-size="14" fill="#E80032" stroke="none" text-anchor="middle">CLIENT</text>
+
+  <!-- server -->
+  <rect x="270" y="95" width="110" height="65" rx="4"/>
+  <text x="325" y="133" font-family="'Courier New', monospace" font-size="14" fill="#E80032" stroke="none" text-anchor="middle">SERVER</text>
+
+  <!-- TLS tunnel boundary -->
+  <rect x="150" y="68" width="100" height="124" rx="6" stroke-dasharray="6 6" opacity="0.55"/>
+  <text x="200" y="40" font-family="'Courier New', monospace" font-size="12" fill="#E80032" stroke="none" text-anchor="middle">TLS 1.3</text>
+
+  <!-- request arrow -->
+  <line x1="130" y1="115" x2="263" y2="115"/>
+  <polygon points="265,115 251,108 251,122" fill="#E80032" stroke="none"/>
+  <text x="197" y="105" font-family="'Courier New', monospace" font-size="11" fill="#E80032" stroke="none" text-anchor="middle">GET /</text>
+
+  <!-- response arrow -->
+  <line x1="265" y1="150" x2="132" y2="150"/>
+  <polygon points="130,150 144,143 144,157" fill="#E80032" stroke="none"/>
+  <text x="197" y="173" font-family="'Courier New', monospace" font-size="11" fill="#E80032" stroke="none" text-anchor="middle">200 OK</text>
+
+  <!-- padlock -->
+  <path d="M185 55 a15 15 0 0 1 30 0 v10 h-30 z"/>
+  <rect x="180" y="65" width="40" height="28" rx="3"/>
+  <circle cx="200" cy="79" r="3" fill="#E80032" stroke="none"/>
+
+  <text x="200" y="225" font-family="'Courier New', monospace" font-size="11" fill="#E80032" stroke="none" text-anchor="middle" opacity="0.7">HTTP:// IS THE SAME CONVERSATION, UNSEALED</text>
+</svg>

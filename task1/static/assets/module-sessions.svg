@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none" stroke="#E80032" stroke-width="3">
+  <!-- browser window -->
+  <rect x="40" y="30" width="320" height="200" rx="6"/>
+  <line x1="40" y1="64" x2="360" y2="64"/>
+  <circle cx="58" cy="47" r="4" fill="#E80032" stroke="none"/>
+  <circle cx="72" cy="47" r="4" fill="#E80032" stroke="none"/>
+  <circle cx="86" cy="47" r="4" fill="#E80032" stroke="none"/>
+  <rect x="110" y="40" width="210" height="14" rx="3" opacity="0.5"/>
+
+  <!-- cookie -->
+  <circle cx="115" cy="150" r="36"/>
+  <circle cx="102" cy="137" r="3" fill="#E80032" stroke="none"/>
+  <circle cx="128" cy="139" r="3" fill="#E80032" stroke="none"/>
+  <circle cx="112" cy="159" r="3" fill="#E80032" stroke="none"/>
+  <circle cx="132" cy="163" r="3" fill="#E80032" stroke="none"/>
+  <circle cx="96" cy="162" r="3" fill="#E80032" stroke="none"/>
+  <circle cx="118" cy="145" r="3" fill="#E80032" stroke="none"/>
+
+  <!-- session tag -->
+  <path d="M195 135 h85 l20 20 l-20 20 h-85 z"/>
+  <circle cx="215" cy="155" r="6"/>
+  <text x="272" y="159" font-family="'Courier New', monospace" font-size="11" fill="#E80032" stroke="none" text-anchor="middle">SESSID</text>
+
+  <text x="200" y="205" font-family="'Courier New', monospace" font-size="12" fill="#E80032" stroke="none" text-anchor="middle">SET-COOKIE: SESSION=...</text>
+</svg>

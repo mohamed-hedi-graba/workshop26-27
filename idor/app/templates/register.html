@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Create account — Inkwell{% endblock %}
+{% block content %}
+<div class="auth-card">
+  <h1>Start writing</h1>
+  <form id="register-form" class="form">
+    <label>Username
+      <input name="username" autocomplete="username" required />
+    </label>
+    <label>Email
+      <input name="email" type="email" autocomplete="email" required />
+    </label>
+    <label>Password
+      <input name="password" type="password" autocomplete="new-password" required />
+    </label>
+    <button class="btn" type="submit">Create account</button>
+    <p class="form-error" id="err"></p>
+  </form>
+  <p class="muted">Already have an account? <a href="/login">Sign in</a></p>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.getElementById("register-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const err = document.getElementById("err");
+  err.textContent = "";
+  const res = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: f.username.value,
+      email: f.email.value,
+      password: f.password.value,
+    }),
+  });
+  if (res.ok) {
+    window.location = "/dashboard";
+  } else {
+    const d = await res.json().catch(() => ({}));
+    err.textContent = d.detail || "Registration failed";
+  }
+});
+</script>
+{% endblock %}

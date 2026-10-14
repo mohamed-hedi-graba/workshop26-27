@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Profile — Inkwell{% endblock %}
+{% block content %}
+<div class="profile">
+  <div class="profile-avatar">{{ user.username[0]|upper }}</div>
+  <h1>{{ user.username }}</h1>
+  <p class="muted">{{ user.email }}</p>
+  {% if user.bio %}<p class="bio">{{ user.bio }}</p>{% endif %}
+  <p class="meta">Member since {{ user.created_at.strftime("%B %Y") }}</p>
+  <p class="muted"><a href="/dashboard">Go to dashboard</a></p>
+</div>
+{% endblock %}

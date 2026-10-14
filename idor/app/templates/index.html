@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Inkwell — Stories{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Read something worth your time.</h1>
+  <p class="lede">Essays, notes, and field reports from writers across the Inkwell community.</p>
+</section>
+
+<section class="feed">
+  {% if posts %}
+    {% for post in posts %}
+    <article class="card">
+      {% if post.image_path %}
+      <a href="/posts/{{ post.id }}" class="card-media">
+        <img src="{{ post.image_path }}" alt="" loading="lazy" />
+      </a>
+      {% endif %}
+      <div class="card-body">
+        <h2><a href="/posts/{{ post.id }}">{{ post.title }}</a></h2>
+        <p class="meta">by {{ post.author.username }} · {{ post.created_at.strftime("%b %d, %Y") }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p class="muted">No stories yet. Be the first to publish.</p>
+  {% endif %}
+</section>
+{% endblock %}
