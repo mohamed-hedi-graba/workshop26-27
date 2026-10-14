@@ -19,6 +19,20 @@ uvicorn app.main:app --reload
 
 Then open http://127.0.0.1:8000
 
+## Running with Docker
+
+```bash
+docker compose up --build
+```
+
+The container seeds the sample data automatically on first start and serves on
+http://127.0.0.1:8000. The SQLite database and uploaded images are kept in named
+volumes (`db`, `uploads`), so they survive restarts. To start completely fresh:
+
+```bash
+docker compose down -v
+```
+
 ## Sample accounts
 
 Created by `python -m app.seed`:
