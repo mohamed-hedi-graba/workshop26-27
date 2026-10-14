@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secret Guess Challenge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Secret Guess Challenge</h1>
+        <div id="secret-section" class="mb-4">
+            <button id="generate-btn" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">Generate Secret</button>
+        </div>
+        <div id="guess-section" class="hidden">
+            <input id="guess-input" type="text" placeholder="Enter your guess" class="w-full p-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button id="submit-btn" class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">Submit Guess</button>
+        </div>
+        <p id="message" class="mt-4 text-center text-gray-600"></p>
+        <div id="flag-section" class="hidden mt-4 p-4 bg-green-100 rounded text-center">
+            <p id="flag-text" class="text-green-800 font-semibold"></p>
+        </div>
+    </div>
+
+    <script type="module" src="/src/client.js"></script>
+</body>
+</html>

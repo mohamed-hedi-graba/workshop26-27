@@ -1,0 +1,32 @@
+{
+  "name": "rng",
+  "version": "1.0.0",
+  "description": "Secret Guess Challenge with Vite and Express",
+  "main": "server.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "express-session": "^1.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ghr4b/rng.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ghr4b/rng/issues"
+  },
+  "homepage": "https://github.com/Ghr4b/rng#readme"
+}
