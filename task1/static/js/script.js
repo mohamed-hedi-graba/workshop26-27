@@ -1,5 +1,5 @@
 /* build: securinets-workshop bundle :: strip debug before release
-   SECURINETS{d0nt_trust_th3_cl13nt} */
+   Securinets{d0nt_trust_th3_cl13nt} */
 
 /* Minimal, self-contained typewriter: types once, then stops.
    Supports "\n" (line break) and "^<ms>" (pause) tokens. */

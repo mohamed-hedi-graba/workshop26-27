@@ -16,7 +16,14 @@ BASE_DIR = os.path.dirname(__file__)
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Inkwell")
+app = FastAPI(
+    title="Inkwell API",
+    description="Inkwell — a blogging platform. Interactive API reference.",
+    version="1.0.0",
+    docs_url="/api/swagger",
+    redoc_url="/api/redoc",
+    openapi_url="/api/openapi.json",
+)
 
 app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
 templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
@@ -33,7 +40,7 @@ def render_md(text: str) -> str:
     )
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse, include_in_schema=False)
 def home(request: Request, db: Session = Depends(get_db), user=Depends(get_optional_user)):
     feed = (
         db.query(Post)
@@ -46,17 +53,17 @@ def home(request: Request, db: Session = Depends(get_db), user=Depends(get_optio
     )
 
 
-@app.get("/login", response_class=HTMLResponse)
+@app.get("/login", response_class=HTMLResponse, include_in_schema=False)
 def login_page(request: Request, user=Depends(get_optional_user)):
     return templates.TemplateResponse("login.html", {"request": request, "user": user})
 
 
-@app.get("/register", response_class=HTMLResponse)
+@app.get("/register", response_class=HTMLResponse, include_in_schema=False)
 def register_page(request: Request, user=Depends(get_optional_user)):
     return templates.TemplateResponse("register.html", {"request": request, "user": user})
 
 
-@app.get("/dashboard", response_class=HTMLResponse)
+@app.get("/dashboard", response_class=HTMLResponse, include_in_schema=False)
 def dashboard(request: Request, db: Session = Depends(get_db), user=Depends(get_optional_user)):
     if user is None:
         return templates.TemplateResponse(
@@ -73,7 +80,7 @@ def dashboard(request: Request, db: Session = Depends(get_db), user=Depends(get_
     )
 
 
-@app.get("/new", response_class=HTMLResponse)
+@app.get("/new", response_class=HTMLResponse, include_in_schema=False)
 def new_post_page(request: Request, user=Depends(get_optional_user)):
     if user is None:
         return templates.TemplateResponse(
@@ -82,7 +89,7 @@ def new_post_page(request: Request, user=Depends(get_optional_user)):
     return templates.TemplateResponse("new_post.html", {"request": request, "user": user})
 
 
-@app.get("/profile", response_class=HTMLResponse)
+@app.get("/profile", response_class=HTMLResponse, include_in_schema=False)
 def profile_page(request: Request, user=Depends(get_optional_user)):
     if user is None:
         return templates.TemplateResponse(
@@ -91,7 +98,7 @@ def profile_page(request: Request, user=Depends(get_optional_user)):
     return templates.TemplateResponse("profile.html", {"request": request, "user": user})
 
 
-@app.get("/authors", response_class=HTMLResponse)
+@app.get("/authors", response_class=HTMLResponse, include_in_schema=False)
 def authors_page(request: Request, db: Session = Depends(get_db), user=Depends(get_optional_user)):
     all_users = db.query(User).order_by(User.username).all()
     return templates.TemplateResponse(
@@ -99,7 +106,7 @@ def authors_page(request: Request, db: Session = Depends(get_db), user=Depends(g
     )
 
 
-@app.get("/posts/{post_id}", response_class=HTMLResponse)
+@app.get("/posts/{post_id}", response_class=HTMLResponse, include_in_schema=False)
 def post_page(post_id: int, request: Request, db: Session = Depends(get_db), user=Depends(get_optional_user)):
     post = db.query(Post).filter(Post.id == post_id).first()
     if post is None:

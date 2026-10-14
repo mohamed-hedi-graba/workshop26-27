@@ -26,7 +26,7 @@ docker compose up --build
 ```
 
 The container seeds the sample data automatically on first start and serves on
-http://127.0.0.1:8000. The SQLite database and uploaded images are kept in named
+http://127.0.0.1:5008. The SQLite database and uploaded images are kept in named
 volumes (`db`, `uploads`), so they survive restarts. To start completely fresh:
 
 ```bash
@@ -46,12 +46,16 @@ Created by `python -m app.seed`:
 
 ## API
 
+Interactive reference: **http://127.0.0.1:8000/api/swagger** (Swagger UI).
+ReDoc is at `/api/redoc` and the raw spec at `/api/openapi.json`.
+
 - `POST /api/auth/register` — create an account
 - `POST /api/auth/login` — sign in
 - `POST /api/auth/logout` — sign out
 - `GET  /api/users/me` — the signed-in user's profile
 - `GET  /api/users` — directory of all users
 - `GET  /api/users/{user_id}` — a user's details
+- `GET  /api/users/{user_id}/posts` — posts by a given user
 - `GET  /api/posts` — public feed
 - `GET  /api/posts/mine` — your own posts
 - `POST /api/posts` — publish a post (multipart form)

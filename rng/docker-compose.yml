@@ -4,7 +4,7 @@ services:
   app:
     build: .
     ports:
-      - "1003:3000"
+      - "5009:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000

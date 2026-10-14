@@ -4,7 +4,7 @@ services:
   php-apache:
     build: .
     ports:
-      - "1000:80"
+      - "5007:80"
     volumes:
       - .:/var/www/html
     environment:

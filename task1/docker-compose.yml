@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    ports:
+      # host 5010 -> container 8000 (exposed to the outside)
+      - "5010:8000"
+    volumes:
+      - db:/app/data
+    environment:
+      - SECURINETS_DB=/app/data/securinets_auth.db
+      - SECURINETS_FLAG=Securinets{m4ss_4ss1gnm3nt_r0l3_3sc4l4t10n}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  db:
